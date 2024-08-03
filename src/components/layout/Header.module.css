@@ -1,0 +1,59 @@
+/* HEADER */
+
+/* #header {
+  position: sticky;
+  top: 0;
+} */
+
+header {
+  /* position: sticky; */
+  /* top: 0; */
+  /* height: 50px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: rgb(255, 251, 0); */
+  background-color: rgba(255, 255, 255, 0.5);
+
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+
+  z-index: 100;
+  padding: 0 1rem 0;
+}
+
+header ul {
+  list-style: none;
+  padding-inline-start: 0;
+  display: flex;
+}
+
+.menuItem {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .hamburger {
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+  }
+
+  /* .menuList {
+    list-style: none;
+    padding-inline-start: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menuList li {
+    margin: 10px;
+    font-size: 3rem;
+  } */
+}

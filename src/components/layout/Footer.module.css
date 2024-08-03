@@ -1,0 +1,32 @@
+footer {
+  height: 50px;
+  width: 100%;
+  /* position: absolute; */
+  /* bottom: 0; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: pink; */
+  /* background-color: rgba(255, 255, 255, 0.5); */
+
+  background: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 16px;
+  z-index: 100;
+  padding: 0 1rem 0;
+}
+
+footer ul {
+  list-style: none;
+  /* padding-inline-start: 0; */
+  margin: 0;
+  display: flex;
+}
+
+footer .nav {
+  margin-left: 10px;
+}
