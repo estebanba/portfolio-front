@@ -1,8 +1,11 @@
 import { HashLink } from "react-router-hash-link";
 import { scrollWithOffset } from "../../utils/scrollWithOffset";
 import stylesMenuNav from "./MenuNav.module.css";
+import useAnimationStore from "../../store/animationStore";
 
 const MenuNav = ({ setMenuOpen, menuOpen }) => {
+  const { setIsBouncing } = useAnimationStore();
+
   return (
     <nav>
       <ul className={stylesMenuNav.menuList}>
@@ -18,6 +21,7 @@ const MenuNav = ({ setMenuOpen, menuOpen }) => {
               if (menuOpen === true) {
                 setMenuOpen(false);
               }
+              setIsBouncing(true);
             }}
           >
             About
@@ -35,6 +39,7 @@ const MenuNav = ({ setMenuOpen, menuOpen }) => {
               if (menuOpen === true) {
                 setMenuOpen(false);
               }
+              setIsBouncing(true);
             }}
           >
             Work
@@ -69,6 +74,7 @@ const MenuNav = ({ setMenuOpen, menuOpen }) => {
               if (menuOpen === true) {
                 setMenuOpen(false);
               }
+              setIsBouncing(true);
             }}
           >
             Contact

@@ -1,9 +1,7 @@
 import {
   AccumulativeShadows,
-  Box,
   Environment,
   Grid,
-  OrbitControls,
   PresentationControls,
   RandomizedLight,
   Text3D,
@@ -13,7 +11,7 @@ import stylesCanvas from "./CanvasSpace.module.css";
 import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 import { CONSTANTS } from "../../utils/constants";
-import { useState } from "react";
+import useAnimationStore from "../../store/animationStore";
 
 export const CanvasSpace = () => {
   const isMobile = useMediaQuery({ maxWidth: CONSTANTS.mobileWidth });
@@ -46,11 +44,12 @@ export const CanvasSpace = () => {
     castShadow: true,
   };
 
-  const [isBouncing, setIsBouncing] = useState(false);
+  //   const [isBouncing, setIsBouncing] = useState(false);
+  const { isBouncing, setIsBouncing } = useAnimationStore();
 
   const { scale, position } = useSpring({
-    scale: isBouncing ? [1.2, 1.2, 1.2] : [1, 1, 1],
-    position: isBouncing ? [0, 0.5, 0] : [0, 0, 0],
+    scale: isBouncing ? [1.05, 1.05, 1.05] : [1, 1, 1],
+    position: isBouncing ? [0, 0.25, 0] : [0, 0, 0],
     config: { tension: 200, friction: 10 },
     onRest: () => setIsBouncing(false),
   });
@@ -88,18 +87,22 @@ export const CanvasSpace = () => {
           far={10}
           position={[1, 1, 1]}
         /> */}
-          <Grid position={[0, -0.01, 0]} args={gridSize} {...gridConfig} />
+          <Grid
+            receiveShadow
+            position={[0, -0.01, 0]}
+            args={gridSize}
+            {...gridConfig}
+          />
           {/* <Box castShadow receiveShadow position={[-0.75, 0.5, 2]}>
           <meshStandardMaterial color="#d1d1d1" />
         </Box> */}
-
           <animated.mesh
             scale={scale}
             onClick={handleSphereClick}
             position={position}
           >
             <Text3D
-              position={[-2.5, 0, 0]}
+              position={[-3, 0.5, 0]}
               //   curveSegments={32}
               //   bevelEnabled
               //   bevelSize={0.01}
@@ -113,31 +116,36 @@ export const CanvasSpace = () => {
               //   castShadow
               {...textConfig}
             >
-              {`will be`}
+              {`updating`}
               <meshStandardMaterial color="#d1d1d1" />
               {/* <meshNormalMaterial /> */}
             </Text3D>
-
-            <Text3D position={[-2.25, 0, 2]} {...textConfig}>
-              {`back soon`}
+            <Text3D position={[-2.5, 0.5, 2]} {...textConfig}>
+              {"portfolio..."}
               <meshStandardMaterial color="#d1d1d1" />
               {/* <meshNormalMaterial /> */}
             </Text3D>
+            {/* 
+            <animated.mesh position={[0, 0, 0]} opacity={opacity}>
+              <Text3D position={[3.85, 0.5, 2]} {...textConfig}>
+                {displayedText}
+                <meshStandardMaterial color="#d1d1d1" />
+              </Text3D>
+            </animated.mesh> */}
           </animated.mesh>
-
           {/* <OrbitControls makeDefault /> */}
-
           <Environment preset="studio" />
           <AccumulativeShadows
             temporal
             frames={100}
-            color="white"
+            color="lightgray"
             colorBlend={10}
             alphaTest={0.9}
             scale={20}
           >
             <RandomizedLight amount={10} radius={4} position={[5, 5, -10]} />
           </AccumulativeShadows>
+          ;
         </PresentationControls>
       </Canvas>
     </div>
