@@ -4,6 +4,7 @@ import {
   Grid,
   PresentationControls,
   RandomizedLight,
+  SpotLight,
   Text3D,
 } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
@@ -23,7 +24,7 @@ export const CanvasSpace = () => {
     sectionSize: 3.3,
     sectionThickness: 1.5,
     sectionColor: "lightgray",
-    fadeDistance: 25,
+    fadeDistance: 50,
     fadeStrength: 1,
     followCamera: false,
     infiniteGrid: true,
@@ -62,9 +63,9 @@ export const CanvasSpace = () => {
     <div id={stylesCanvas.canvasSpace}>
       <Canvas
         shadows
-        camera={{ position: isMobile ? [10, 7, 10] : [7, 5, 7], fov: 50 }}
+        camera={{ position: isMobile ? [0, 8, 20] : [0, 8, 12], fov: 50 }}
       >
-        <PresentationControls
+        {/* <PresentationControls
           global // Spin globally or by dragging the model
           cursor={true} // Whether to toggle cursor style on drag
           snap // Snap-back to center (can also be a spring config)
@@ -75,6 +76,14 @@ export const CanvasSpace = () => {
           azimuth={[-Math.PI / 4, Math.PI / 4]}
           config={{ mass: 1, tension: 170, friction: 26 }} // Spring config
           //   domElement={events.connected} // The DOM element events for this controller will attach to
+        > */}
+        <PresentationControls
+          snap
+          global
+          zoom={0.8}
+          rotation={[0, 0, 0]} // Default rotation
+          polar={[0, Math.PI / 4]}
+          azimuth={[-Math.PI / 4, Math.PI / 4]}
         >
           {/* <OrthographicCamera
           makeDefault
@@ -117,12 +126,12 @@ export const CanvasSpace = () => {
               {...textConfig}
             >
               {`updating`}
-              <meshStandardMaterial color="#d1d1d1" />
+              <meshStandardMaterial color={"white"} />
               {/* <meshNormalMaterial /> */}
             </Text3D>
-            <Text3D position={[-2.5, 0.5, 2]} {...textConfig}>
+            <Text3D position={[-3.5, 0.5, 2]} {...textConfig}>
               {"portfolio..."}
-              <meshStandardMaterial color="#d1d1d1" />
+              <meshStandardMaterial color="white" />
               {/* <meshNormalMaterial /> */}
             </Text3D>
             {/* 
@@ -134,16 +143,16 @@ export const CanvasSpace = () => {
             </animated.mesh> */}
           </animated.mesh>
           {/* <OrbitControls makeDefault /> */}
-          <Environment preset="studio" />
+          <Environment preset={"city"} />
           <AccumulativeShadows
             temporal
             frames={100}
-            color="lightgray"
+            color="white"
             colorBlend={10}
             alphaTest={0.9}
             scale={20}
           >
-            <RandomizedLight amount={10} radius={4} position={[5, 5, -10]} />
+            <RandomizedLight amount={1} radius={4} position={[5, 5, -10]} />
           </AccumulativeShadows>
           ;
         </PresentationControls>
