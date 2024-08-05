@@ -2,10 +2,13 @@ import {
   AccumulativeShadows,
   Environment,
   Grid,
+  Html,
+  OrbitControls,
   PresentationControls,
   RandomizedLight,
   SpotLight,
   Text3D,
+  useProgress,
 } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 import stylesCanvas from "./CanvasSpace.module.css";
@@ -13,6 +16,7 @@ import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 import { CONSTANTS } from "../../utils/constants";
 import useAnimationStore from "../../store/animationStore";
+import { Suspense } from "react";
 
 export const CanvasSpace = () => {
   const isMobile = useMediaQuery({ maxWidth: CONSTANTS.mobileWidth });
@@ -59,13 +63,19 @@ export const CanvasSpace = () => {
     setIsBouncing(true);
   };
 
+  function Loader() {
+    const { active, progress, errors, item, loaded, total } = useProgress();
+    return <Html center>{progress} % loaded</Html>;
+  }
+
   return (
     <div id={stylesCanvas.canvasSpace}>
       <Canvas
         shadows
         camera={{ position: isMobile ? [0, 8, 20] : [0, 8, 12], fov: 50 }}
       >
-        {/* <PresentationControls
+        <Suspense fallback={<Loader />}>
+          {/* <PresentationControls
           global // Spin globally or by dragging the model
           cursor={true} // Whether to toggle cursor style on drag
           snap // Snap-back to center (can also be a spring config)
@@ -77,14 +87,14 @@ export const CanvasSpace = () => {
           config={{ mass: 1, tension: 170, friction: 26 }} // Spring config
           //   domElement={events.connected} // The DOM element events for this controller will attach to
         > */}
-        <PresentationControls
-          snap
-          global
-          zoom={0.8}
-          rotation={[0, 0, 0]} // Default rotation
-          polar={[0, Math.PI / 4]}
-          azimuth={[-Math.PI / 4, Math.PI / 4]}
-        >
+          {/* <PresentationControls
+            snap
+            global
+            zoom={0.8}
+            rotation={[0, 0, 0]} // Default rotation
+            polar={[0, Math.PI / 4]}
+            azimuth={[-Math.PI / 4, Math.PI / 4]}
+          > */}
           {/* <OrthographicCamera
           makeDefault
           zoom={1}
@@ -108,6 +118,7 @@ export const CanvasSpace = () => {
           <animated.mesh
             scale={scale}
             onClick={handleSphereClick}
+            onPointerOver={handleSphereClick}
             position={position}
           >
             <Text3D
@@ -142,7 +153,15 @@ export const CanvasSpace = () => {
               </Text3D>
             </animated.mesh> */}
           </animated.mesh>
-          {/* <OrbitControls makeDefault /> */}
+          <OrbitControls
+            makeDefault
+            maxPolarAngle={Math.PI / 2.5}
+            minPolarAngle={Math.PI / 6}
+            minAzimuthAngle={-Math.PI / 4}
+            maxAzimuthAngle={Math.PI / 4}
+            minDistance={10}
+            maxDistance={30}
+          />
           <Environment preset={"city"} />
           <AccumulativeShadows
             temporal
@@ -154,8 +173,8 @@ export const CanvasSpace = () => {
           >
             <RandomizedLight amount={1} radius={4} position={[5, 5, -10]} />
           </AccumulativeShadows>
-          ;
-        </PresentationControls>
+          ;{/* </PresentationControls> */}
+        </Suspense>
       </Canvas>
     </div>
   );
