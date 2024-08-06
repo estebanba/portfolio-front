@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import stylesHeader from "./Header.module.css";
 import { CONSTANTS } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import { HamburgerMenu } from "./HamburgerMenu";
 
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: CONSTANTS.mobileWidth });
@@ -23,7 +24,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <div>
+        {/* <div>
           <HashLink
             smooth
             to={{
@@ -38,13 +39,15 @@ const Header = () => {
           >
             EB
           </HashLink>
-        </div>
-        {!isMobile && <MenuNav />}
-        {isMobile && (
+        </div> */}
+        {/* {!isMobile && <MenuNav />} */}
+
+        {/* {isMobile && (
           <Link onClick={handleToggle} className={stylesHeader.hamburger}>
             {menuOpen ? "Close" : "Menu"}
           </Link>
-        )}
+        )} */}
+        <HamburgerMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       </header>
       <MenuMobile menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       {/* <hr></hr> */}

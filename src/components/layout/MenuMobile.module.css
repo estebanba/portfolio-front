@@ -1,16 +1,16 @@
-@media screen and (max-width: 600px) {
-  .menuMobile {
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(50%, 50%); */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgba(255, 255, 255, 0.5); */
-    backdrop-filter: blur(5px);
-  }
+/* @media screen and (max-width: 600px) { */
+.menuMobile {
+  height: calc(93vh);
+  width: 100%;
+  position: absolute;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(50%, 50%); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  backdrop-filter: blur(5px);
 }
+/* } */

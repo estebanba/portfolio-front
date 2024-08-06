@@ -13,29 +13,34 @@ const Footer = () => {
 
   return (
     <footer>
-      <p>© {year} Esteban Basili</p>
+      {year && (
+        <>
+          <p>© {year} Esteban Basili</p>
 
-      <ul>
-        <li className={stylesFooter.nav}>
-          <a style={{ color: "inherit" }} href="mailto:me@estebanbasili.com">
-            me@estebanbasili.com
-          </a>
-        </li>
-        {/* <li className={stylesFooter.nav}>
+          <ul>
+            <li className={stylesFooter.nav}>
+              <a
+                style={{ color: "inherit" }}
+                href="mailto:me@estebanbasili.com"
+              >
+                me@estebanbasili.com
+              </a>
+            </li>
+            {/* <li className={stylesFooter.nav}>
               <a href={cvDownload} download="EstebanBasili_CV_2022">
                 Download CV
               </a>
             </li> */}
-        <li className={stylesFooter.nav}>
-          <a
-            href="https://www.linkedin.com/in/estebanbasili/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </li>
-        {/* <li className={stylesFooter.nav}>
+            <li className={stylesFooter.nav}>
+              <a
+                href="https://www.linkedin.com/in/estebanbasili/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </li>
+            {/* <li className={stylesFooter.nav}>
               <a
                 href="https://www.instagram.com/estebanbasili"
                 target="_blank"
@@ -44,16 +49,18 @@ const Footer = () => {
                 Instagram
               </a>
             </li> */}
-        <li className={stylesFooter.nav}>
-          <a
-            href="https://github.com/estebanba"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-        </li>
-      </ul>
+            <li className={stylesFooter.nav}>
+              <a
+                href="https://github.com/estebanba"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </>
+      )}
     </footer>
   );
 };

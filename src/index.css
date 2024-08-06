@@ -28,7 +28,7 @@ body {
   color: #121212;
 }
 
-textarea,
+/* textarea,
 input,
 button {
   font-size: 1rem;
@@ -40,14 +40,14 @@ button {
   background-color: white;
   line-height: 1.5;
   margin: 0;
-}
+} */
 
 /* button {
   color: #3992ff;
   font-weight: 500;
 } */
 
-textarea:hover,
+/* textarea:hover,
 input:hover,
 button:hover {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
@@ -56,7 +56,7 @@ button:hover {
 button:active {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
   transform: translateY(1px);
-}
+} */
 
 /* CONTACT OUT */
 
@@ -158,6 +158,30 @@ a:active {
   /* font-weight: 900; */
   color: gray;
   text-decoration: none;
+}
+
+.bigButton {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+  background-color: white;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.bigButton:hover {
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+}
+
+.bigButton:active {
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
+  transform: translateY(1px);
 }
 
 .page {
