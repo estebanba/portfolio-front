@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   box-sizing: border-box;
 }
@@ -501,5 +505,11 @@ footer ul .nav {
 
   .swipeBtn {
     display: none;
+  }
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
   }
 }

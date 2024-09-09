@@ -42,12 +42,11 @@ const Header = () => {
         </div> */}
         {/* {!isMobile && <MenuNav />} */}
 
-        {/* {isMobile && (
-          <Link onClick={handleToggle} className={stylesHeader.hamburger}>
-            {menuOpen ? "Close" : "Menu"}
-          </Link>
-        )} */}
-        <HamburgerMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <Link onClick={handleToggle} className={stylesHeader.hamburger}>
+          {menuOpen ? "Close" : "Menu"}
+        </Link>
+
+        {/* <HamburgerMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> */}
       </header>
       <MenuMobile menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       {/* <hr></hr> */}

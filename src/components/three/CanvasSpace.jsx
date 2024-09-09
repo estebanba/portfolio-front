@@ -8,45 +8,31 @@ import {
   RandomizedLight,
   SpotLight,
   Text3D,
+  useMatcapTexture,
   useProgress,
 } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 import stylesCanvas from "./CanvasSpace.module.css";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 import { CONSTANTS } from "../../utils/constants";
 import useAnimationStore from "../../store/animationStore";
-import { Suspense } from "react";
+import { Suspense, useRef, useState } from "react";
 
 export const CanvasSpace = () => {
   const isMobile = useMediaQuery({ maxWidth: CONSTANTS.mobileWidth });
   const { gridSize, ...gridConfig } = {
     gridSize: [10.5, 10.5],
-    cellSize: 0.6,
+    cellSize: 1,
     cellThickness: 1,
     cellColor: "lightgray",
-    sectionSize: 3.3,
-    sectionThickness: 1.5,
+    sectionSize: 3,
+    sectionThickness: 0,
     sectionColor: "lightgray",
     fadeDistance: 50,
     fadeStrength: 1,
     followCamera: false,
     infiniteGrid: true,
-  };
-
-  const textConfig = {
-    // position: [0, 0, 0],
-    curveSegments: 32,
-    bevelEnabled: true,
-    bevelSize: 0.01,
-    bevelThickness: 0.1,
-    height: 0.05,
-    lineHeight: 0.5,
-    letterSpacing: 0,
-    size: 1,
-    font: "/Kanit Black_Regular.json",
-    receiveShadow: true,
-    castShadow: true,
   };
 
   //   const [isBouncing, setIsBouncing] = useState(false);
@@ -121,30 +107,22 @@ export const CanvasSpace = () => {
             onPointerOver={handleSphereClick}
             position={position}
           >
-            <Text3D
-              position={[-3, 0.5, 0]}
-              //   curveSegments={32}
-              //   bevelEnabled
-              //   bevelSize={0.01}
-              //   bevelThickness={0.1}
-              //   height={0.05}
-              //   lineHeight={0.5}
-              //   letterSpacing={0}
-              //   size={1}
-              //   font={"/Kanit Black_Regular.json"}
-              //   receiveShadow
-              //   castShadow
-              {...textConfig}
+            <group
+              position={[3, 1, 3]}
+              rotation={[-Math.PI * 0.5, 0, Math.PI * 0.25]}
             >
-              {`updating`}
+              <AnimatedText text={"PORTFOLIO"} position={[-4.3, 1.75, 0]} />
+              <AnimatedText text={"IN PROGRESS"} position={[-4.3, 0.5, 0]} />
+            </group>
+
+            {/* <Text3D position={[-3, 0.5, 0]} {...textConfig}>
+              {``}
               <meshStandardMaterial color={"white"} />
-              {/* <meshNormalMaterial /> */}
-            </Text3D>
-            <Text3D position={[-3.5, 0.5, 2]} {...textConfig}>
+            </Text3D> */}
+            {/* <Text3D position={[-3.5, 0.5, 2]} {...textConfig}>
               {"portfolio..."}
               <meshStandardMaterial color="white" />
-              {/* <meshNormalMaterial /> */}
-            </Text3D>
+            </Text3D> */}
             {/* 
             <animated.mesh position={[0, 0, 0]} opacity={opacity}>
               <Text3D position={[3.85, 0.5, 2]} {...textConfig}>
@@ -173,9 +151,49 @@ export const CanvasSpace = () => {
           >
             <RandomizedLight amount={1} radius={4} position={[5, 5, -10]} />
           </AccumulativeShadows>
-          ;{/* </PresentationControls> */}
+          {/* </PresentationControls> */}
         </Suspense>
       </Canvas>
     </div>
   );
 };
+
+function AnimatedText({ text, position }) {
+  const textRef = useRef();
+  const [opacity, setOpacity] = useState(0);
+  const [matcapTexture] = useMatcapTexture("728473_534C40_7BCEC8_7BB9B6", 256);
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    setOpacity(Math.abs(Math.sin(t * 0.5)));
+  });
+
+  const textConfig = {
+    // position: [0, 0, 0],
+    curveSegments: 12,
+    bevelEnabled: true,
+    bevelSize: 0.01,
+    bevelThickness: 0.1,
+    height: 0.01,
+    lineHeight: 0.5,
+    letterSpacing: 0.1,
+    size: 1,
+    font: "/Kanit Black_Regular.json",
+    receiveShadow: true,
+    castShadow: true,
+  };
+
+  return (
+    <group ref={textRef}>
+      <Text3D position={position} {...textConfig}>
+        {text}
+        {/* <meshStandardMaterial color="#88ccff" transparent opacity={opacity} /> */}
+        <meshMatcapMaterial
+          matcap={matcapTexture}
+          transparent
+          opacity={opacity}
+        />
+      </Text3D>
+    </group>
+  );
+}
