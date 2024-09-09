@@ -58,7 +58,7 @@ export const CanvasSpace = () => {
     <div id={stylesCanvas.canvasSpace}>
       <Canvas
         shadows
-        camera={{ position: isMobile ? [0, 8, 20] : [0, 8, 12], fov: 50 }}
+        camera={{ position: isMobile ? [0, 10, 20] : [0, 10, 12], fov: 50 }}
       >
         <Suspense fallback={<Loader />}>
           {/* <PresentationControls
@@ -108,10 +108,10 @@ export const CanvasSpace = () => {
             position={position}
           >
             <group
-              position={[3, 1, 3]}
+              position={[0.75, 1, 3]}
               rotation={[-Math.PI * 0.5, 0, Math.PI * 0.25]}
             >
-              <AnimatedText text={"PORTFOLIO"} position={[-4.3, 1.75, 0]} />
+              <AnimatedText text={"PORTFOLIO"} position={[-3.75, 1.75, 0]} />
               <AnimatedText text={"IN PROGRESS"} position={[-4.3, 0.5, 0]} />
             </group>
 
