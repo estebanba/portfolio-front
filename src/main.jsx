@@ -6,9 +6,10 @@ import "./index.css";
 
 import ErrorPage from "./routes/ErrorPage";
 
-import Layout from "./routes/Layout";
+import Layout from "./components/layout/Layout";
 import { CanvasSpace } from "./components/three/CanvasSpace";
-import { IsometricGrid } from "./components/three/IsometricGrid";
+import { Experience } from "./components/three/Experience";
+import { HomePage } from "./routes/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,9 @@ const router = createBrowserRouter([
       {
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <CanvasSpace /> },
-          { path: "/iso", element: <IsometricGrid /> },
+          { index: true, element: <HomePage /> },
+          { path: "/grid", element: <CanvasSpace /> },
+          { path: "/iso", element: <Experience /> },
         ],
       },
     ],

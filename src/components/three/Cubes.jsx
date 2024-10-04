@@ -5,12 +5,12 @@ import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import { DraggableCube } from "./DraggableCube";
 
 export function Cubes() {
-  const y = 0.25;
+  const y = 0.5;
 
   const cubePositions = [
-    [-2, y, -2],
+    [-5, y, -2],
     [2, y, -2],
-    [0, y, 0],
+    [4, y, 0],
     [-2, y, 2],
     [2, y, 2],
   ];

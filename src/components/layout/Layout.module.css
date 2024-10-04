@@ -4,20 +4,17 @@
   width: 100vw;
   padding: 0 20px 0;
   margin: 0 auto 0;
-  max-width: 1200px;
+  /* max-width: 1200px; */
 }
 
 .layout {
-  width: 100vw;
+  /* width: 100vw; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  margin: auto;
+  width: 800px;
   height: 100vh;
-
-  display: grid;
-  grid:
-    /* "header header header" auto */
-    "leftSide body rightSide" 1fr
-    "footer footer footer" auto
-    / auto 1fr auto;
-  /* gap: 8px; */
 }
 
 .header {
@@ -38,10 +35,18 @@
 .rightSide {
   grid-area: rightSide;
 }
+
 .footer {
-  /* grid-area: footer; */
   position: absolute;
   z-index: 100;
-  width: 100%;
-  bottom: 0;
+
+  bottom: 2px;
+
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 1rem 0;
 }

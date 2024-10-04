@@ -114,23 +114,10 @@ export const CanvasSpace = () => {
               <AnimatedText text={"PORTFOLIO"} position={[-3.75, 1.75, 0]} />
               <AnimatedText text={"IN PROGRESS"} position={[-4.3, 0.5, 0]} />
             </group>
-
-            {/* <Text3D position={[-3, 0.5, 0]} {...textConfig}>
-              {``}
-              <meshStandardMaterial color={"white"} />
-            </Text3D> */}
-            {/* <Text3D position={[-3.5, 0.5, 2]} {...textConfig}>
-              {"portfolio..."}
-              <meshStandardMaterial color="white" />
-            </Text3D> */}
-            {/* 
-            <animated.mesh position={[0, 0, 0]} opacity={opacity}>
-              <Text3D position={[3.85, 0.5, 2]} {...textConfig}>
-                {displayedText}
-                <meshStandardMaterial color="#d1d1d1" />
-              </Text3D>
-            </animated.mesh> */}
           </animated.mesh>
+
+          {/* <AnimatedText /> */}
+
           <OrbitControls
             makeDefault
             maxPolarAngle={Math.PI / 2.5}

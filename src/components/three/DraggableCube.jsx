@@ -1,7 +1,6 @@
 import { useRef, useState, useMemo, useCallback } from "react";
 import * as THREE from "three";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, OrthographicCamera } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 
 export function DraggableCube({ position, color }) {
   const [pos, setPos] = useState(position);
@@ -69,9 +68,9 @@ export function DraggableCube({ position, color }) {
       receiveShadow
       onPointerEnter={handelPointerEnter}
       onPointerLeave={handlePointerLeave}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
-      onPointerMove={handlePointerMove}
+      // onPointerDown={handlePointerDown}
+      // onPointerUp={handlePointerUp}
+      // onPointerMove={handlePointerMove}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial

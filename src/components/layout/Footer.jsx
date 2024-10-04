@@ -1,6 +1,7 @@
 // import cvDownload from "../assets/files/CV_2022_EstebanBasili_EN.pdf";
 import { useEffect, useState } from "react";
 import stylesFooter from "./Footer.module.css";
+import { ThemeSwitchButton } from "./ThemeSwitchButton";
 
 const Footer = () => {
   const [year, setYear] = useState();
@@ -23,14 +24,10 @@ const Footer = () => {
                 style={{ color: "inherit" }}
                 href="mailto:me@estebanbasili.com"
               >
-                me@estebanbasili.com
+                e-mail
               </a>
             </li>
-            {/* <li className={stylesFooter.nav}>
-              <a href={cvDownload} download="EstebanBasili_CV_2022">
-                Download CV
-              </a>
-            </li> */}
+
             <li className={stylesFooter.nav}>
               <a
                 href="https://www.linkedin.com/in/estebanbasili/"
@@ -40,15 +37,7 @@ const Footer = () => {
                 LinkedIn
               </a>
             </li>
-            {/* <li className={stylesFooter.nav}>
-              <a
-                href="https://www.instagram.com/estebanbasili"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </li> */}
+
             <li className={stylesFooter.nav}>
               <a
                 href="https://github.com/estebanba"
@@ -57,6 +46,9 @@ const Footer = () => {
               >
                 GitHub
               </a>
+            </li>
+            <li className={stylesFooter.nav}>
+              <ThemeSwitchButton />
             </li>
           </ul>
         </>

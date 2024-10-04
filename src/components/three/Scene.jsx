@@ -1,71 +1,61 @@
-import { useRef, useState, useMemo, useCallback, useEffect } from "react";
-import * as THREE from "three";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, OrthographicCamera } from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import useExperienceStore from "../../store/experienceStore";
 
-export function Scene({ children }) {
-  const { camera, gl, scene } = useThree();
-  const controlsRef = useRef();
-  // const [target] = useState(() => new THREE.Vector3());
-  // const [zoomTarget, setZoomTarget] = useState(50);
+import { GigafactoryNodes } from "./GigafactoryNodes";
+import { useControls } from "leva";
+import { TextComp3D } from "./TextComp3D";
 
-  // useFrame(() => {
-  //   controlsRef.current?.update();
-  // });
+export function Scene() {
+  const { setGigaFactoryRef } = useExperienceStore();
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     const aspect = window.innerWidth / window.innerHeight;
-  //     const frustumSize = 20;
-  //     camera.left = (-frustumSize * aspect) / 2;
-  //     camera.right = (frustumSize * aspect) / 2;
-  //     camera.top = frustumSize / 2;
-  //     camera.bottom = -frustumSize / 2;
-  //     camera.updateProjectionMatrix();
-  //     gl.setSize(window.innerWidth, window.innerHeight);
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   handleResize();
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, [camera, gl]);
+  const gigaFactoryRef = useRef();
 
-  useFrame(() => {
-    controlsRef.current?.update();
-    // camera.zoom = THREE.MathUtils.lerp(camera.zoom, zoomTarget, 0.1);
-    // camera.updateProjectionMatrix();
+  console.log({ gigaFactoryRef });
+
+  useEffect(() => {
+    setGigaFactoryRef(gigaFactoryRef);
+  }, [gigaFactoryRef]);
+
+  const { position } = useControls("gigaFactory", {
+    position: {
+      value: { x: 150, y: 0, z: -150 },
+      step: 1,
+    },
   });
-
-  // const handleDoubleClick = (event) => {
-  //   event.stopPropagation();
-  //   if (event.object) {
-  //     const box = new THREE.Box3().setFromObject(event.object);
-  //     const center = box.getCenter(new THREE.Vector3());
-  //     const size = box.getSize(new THREE.Vector3());
-  //     const maxDim = Math.max(size.x, size.y, size.z);
-  //     const fov = camera.fov * (Math.PI / 180);
-  //     let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-
-  //     target.copy(center);
-  //     setZoomTarget(50 / maxDim);
-
-  //     controlsRef.current.target.copy(center);
-  //   }
-  // };
 
   return (
     <>
-      <color attach="background" args={[0xd6b18b]} />
-      <OrbitControls
+      {/* <OrbitControls
         enableRotate={false}
-        ref={controlsRef}
         args={[camera, gl.domElement]}
         enableDamping
         dampingFactor={0.05}
         // minAzimuthAngle={-Math.PI / 10}
         // maxAzimuthAngle={Math.PI / 10}
         // maxPolarAngle={Math.PI / 4}
-      />
-      {children}
+      /> */}
+
+      {/* <OrbitControls
+        enableRotate={false}
+        makeDefault
+        // maxPolarAngle={Math.PI / 4}
+        // minPolarAngle={Math.PI / 4}
+        // minAzimuthAngle={Math.PI / 4}
+        // maxAzimuthAngle={Math.PI / 4}
+        // minDistance={10}
+        // maxDistance={30}
+      /> */}
+
+      {/* <Gigafactory /> */}
+
+      <TextComp3D />
+
+      <group
+        position={[position.x, position.y, position.z]}
+        ref={gigaFactoryRef}
+      >
+        <GigafactoryNodes />
+      </group>
     </>
   );
 }

@@ -42,9 +42,9 @@ const Header = () => {
         </div> */}
         {/* {!isMobile && <MenuNav />} */}
 
-        <Link onClick={handleToggle} className={stylesHeader.hamburger}>
+        <button onClick={handleToggle} className={stylesHeader.hamburger}>
           {menuOpen ? "Close" : "Menu"}
-        </Link>
+        </button>
 
         {/* <HamburgerMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} /> */}
       </header>
