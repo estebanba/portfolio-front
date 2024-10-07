@@ -1,11 +1,16 @@
 footer {
   height: 50px;
-  /* width: 100%; */
+  /* margin: 0; */
+
+  /* width: 800px; */
   /* position: absolute; */
   /* bottom: 0; */
-  max-width: 800px;
+  margin-left: "auto";
+  margin-right: "auto";
+  /* max-width: 100%; */
   display: flex;
-  justify-content: end;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   /* background-color: pink; */
   /* background-color: rgba(255, 255, 255, 0.5); */
@@ -14,7 +19,7 @@ footer {
 
   /* font-family: "Kanit", sans-serif; */
   /* font-weight: 400; */
-  font-style: normal;
+  /* font-style: normal; */
 
   /* font-size: 16px; */
   z-index: 100;

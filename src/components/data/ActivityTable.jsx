@@ -38,68 +38,83 @@ export const ActivityTable = () => {
         lineHeight: 1.4,
         margin: 0,
         padding: "20px",
-
         maxWidth: "800px",
         marginLeft: "auto",
         marginRight: "auto",
       }}
     >
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleSearch}
-        style={{
-          width: "100%",
-          padding: "8px",
-          marginBottom: "20px",
-          border: "none",
-          fontWeight: 300,
-        }}
-      />
-      <div className="button-group">
-        <button onClick={() => handleFilter("project")}>Projects</button>
-        <button onClick={() => handleFilter("experiment")}>Experiment</button>
-        <button onClick={() => handleFilter("blog")}>Blog</button>
-        <button onClick={() => handleFilter("photography")}>Photography</button>
-        {/* <button onClick={() => handleFilter("")}>All</button> */}
-      </div>
-      <div className="button-group">
-        <button onClick={() => handleFilter("software")}>Software</button>
-        <button onClick={() => handleFilter("architecture")}>
-          Architecture
-        </button>
+      <div className="table-nav">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={handleSearch}
+          style={{
+            fontFamily: "inherit",
+            width: "100%",
+            padding: "8px",
+            // marginBottom: "20px",
+            border: "none",
+            fontWeight: 300,
+          }}
+        />
+        <div className="button-group">
+          <button onClick={() => handleFilter("project")}>Projects</button>
+          <button onClick={() => handleFilter("experiment")}>
+            Experiments
+          </button>
+          <button onClick={() => handleFilter("blog")}>Texts</button>
+          <button onClick={() => handleFilter("photography")}>
+            Photographies
+          </button>
+          {/* <button onClick={() => handleFilter("")}>All</button> */}
+        </div>
+        <div className="button-group">
+          <button onClick={() => handleFilter("software")}>Software</button>
+          <button onClick={() => handleFilter("architecture")}>
+            Architecture
+          </button>
 
-        <button onClick={() => handleFilter("")}>All</button>
+          <button onClick={() => handleFilter("")}>All</button>
+        </div>
       </div>
 
       <table
         style={{
           width: "100%",
-          // borderCollapse: "separate",
+          borderCollapse: "collapse",
           // borderSpacing: "0 5px",
         }}
       >
         <tbody>
           {filteredData
-            .sort((a, b) => b.date - a.date)
-            .map((item, index) => (
-              <tr
-                key={`${item.title}-${index}`} // Ensures unique key on every search
-                style={{
-                  cursor: "pointer", // Make rows clickable
-                  opacity: 0,
-                  animation: `fadeIn 0.5s ease-out forwards ${0.05 * index}s`,
-                }}
-                onClick={() => handleRowClick(item.url)} // Add the row click handler
-              >
-                <td className="table-row">
-                  <div>{item.title}</div>
-                  <div className="table-subtitle">{item.subtitle}</div>
-                </td>
-                <td className="date">{item.date}</td>
-              </tr>
-            ))}
+            .sort((a, b) => b.dateFrom - a.dateFrom)
+            .map((item, index) => {
+              // console.log(item.dateFrom);
+              return (
+                <tr
+                  key={`${item.title}-${index}`} // Ensures unique key on every search
+                  style={{
+                    // cursor: "pointer", // Make rows clickable
+                    // opacity: 0,
+                    animation: `fadeIn 0.5s ease-out forwards ${0.05 * index}s`,
+                  }}
+                  onClick={() => handleRowClick(item.url)} // Add the row click handler
+                >
+                  <td className="table-row">
+                    <span>{item.title}</span>
+                    <span className="table-subtitle">{item.subtitle}</span>
+                  </td>
+                  <td className="table-row">
+                    <span className="table-date">
+                      {item.dateFrom && item.dateFrom.getFullYear()}
+                      {/* {item.dateUntil && "-" + item.dateUntil.getFullYear()} */}
+                      {/* {item.dateUntil && item.dateUntil.getFullYear()} */}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>

@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
   --primary-color: #302ae6;
@@ -36,12 +36,19 @@ body {
     color var(--transition-speed);
 }
 
+.table-nav {
+  margin: 0 0 24px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 tr {
   cursor: pointer;
   background-color: var(--bg-color);
 
   opacity: 0;
-  animation: fadeIn 0.5s ease-out forwards;
+  /* animation: fadeIn 0.5s ease-out forwards; */
 
   transition: background-color var(--transition-speed),
     color var(--transition-speed);
@@ -53,8 +60,10 @@ tr:hover {
 
 .table-row {
   padding: 8px 8px;
-  text-align: left;
-  display: flex;
+  /* text-align: left; */
+  /* display: flex; */
+  /* flex-direction: row;
+  justify-content: left;  */
   /* align-items: center; */
   border-bottom: 1px solid var(--tertiary-color);
 }
@@ -65,10 +74,13 @@ tr:hover {
   color: var(--font-secondary-color);
 }
 
-.date {
-  padding: 8px 8px;
+.table-date {
+  /* padding: 8px 8px; */
   text-align: right;
-  border-bottom: 1px solid var(--tertiary-color);
+  /* border-bottom: 1px solid var(--tertiary-color); */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 @keyframes fadeIn {
@@ -100,16 +112,19 @@ input:hover {
 }
 
 .button-group button {
+  font-family: inherit;
+  color: var(--font-color);
   margin: 4px;
   /* flex: 1 1 auto; */
   padding: 4px;
-  /* border: 1px solid #ccc; */
-  /* background-color: #f0f0f0; */
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 
 .button-group button:hover {
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
+  color: var(--font-secondary-color);
 }
 
 /* Toggle switch styles */
@@ -123,6 +138,22 @@ input:hover {
   height: 34px;
   position: relative;
   width: 60px;
+}
+
+.theme-switch-button {
+  background-color: var(--button-bg);
+  color: var(--font-secondary-color);
+  border: none;
+  /* padding: 0.75rem 1.5rem; */
+  /* font-size: 1rem; */
+  /* border-radius: 0.5rem; */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-switch-button:hover {
+  background-color: var(--button-bg-hover);
+  color: var(--button-text-hover);
 }
 
 .theme-switch input {
@@ -227,9 +258,9 @@ a:active {
 }
 
 /* Button active state */
-.bigButton:active {
+/* .bigButton:active {
   transform: translateY(1px);
-}
+} */
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 600px) {

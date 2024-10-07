@@ -47,9 +47,9 @@ const Footer = () => {
                 GitHub
               </a>
             </li>
-            <li className={stylesFooter.nav}>
+            {/* <li className={stylesFooter.nav}>
               <ThemeSwitchButton />
-            </li>
+            </li> */}
           </ul>
         </>
       )}
