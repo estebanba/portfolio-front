@@ -5,7 +5,7 @@ import stylesLayout from "./Layout.module.css";
 import { useMediaQuery } from "react-responsive";
 import { CONSTANTS } from "../../utils/constants";
 
-function Layout() {
+export const Layout = () => {
   // const isMobile = useMediaQuery({ maxWidth: CONSTANTS.mobileWidth });
   return (
     <section className={stylesLayout.layout}>
@@ -25,6 +25,4 @@ function Layout() {
       {/* )} */}
     </section>
   );
-}
-
-export default Layout;
+};

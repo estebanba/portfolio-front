@@ -37,11 +37,11 @@ export const HomePage = () => {
       >
         <div>
           <span style={{ paddingLeft: "8px" }}>Esteban Basili</span>
-          <span
-            className="table-subtitle"
-            // style={{ fontSize: "1.2rem" }}
-          >
-            Architect and Software Design Engineer. Portfolio
+          <span className="table-subtitle" style={{ display: "inline-flex" }}>
+            Architect and Software Design Engineer.
+          </span>
+          <span className="table-subtitle" style={{ display: "inline-flex" }}>
+            Portfolio
           </span>
         </div>
         <div>

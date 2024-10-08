@@ -6,7 +6,7 @@ import "./index.css";
 
 import ErrorPage from "./routes/ErrorPage";
 
-import Layout from "./components/layout/Layout";
+import { Layout } from "./components/layout/Layout";
 import { CanvasSpace } from "./components/three/CanvasSpace";
 import { Experience } from "./components/three/Experience";
 import { HomePage } from "./routes/HomePage";

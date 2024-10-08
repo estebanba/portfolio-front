@@ -44,20 +44,24 @@ export const ActivityTable = () => {
       }}
     >
       <div className="table-nav">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearch}
-          style={{
-            fontFamily: "inherit",
-            width: "100%",
-            padding: "8px",
-            // marginBottom: "20px",
-            border: "none",
-            fontWeight: 300,
-          }}
-        />
+        <div className="button-group">
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearch}
+            style={{
+              fontFamily: "inherit",
+              width: "100%",
+              padding: "8px",
+              // marginBottom: "20px",
+              border: "none",
+              fontWeight: 300,
+            }}
+          />
+        </div>
+
         <div className="button-group">
           <button onClick={() => handleFilter("project")}>Projects</button>
           <button onClick={() => handleFilter("experiment")}>

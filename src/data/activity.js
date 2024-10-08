@@ -279,8 +279,8 @@ export const activity = [
     role: "Project Team Member",
     description:
       "Participated in the design and development of a residential building located at San Martín 3829, focusing on optimizing living space and modern architecture.",
-    dateFrom: createDate("2019-01-01"),
-    dateUntil: createDate("2019-12-31"),
+    dateFrom: createDate("2016-01-01"),
+    dateUntil: createDate("2016-12-31"),
     url: "https://cargocollective.com/4LARQ/San-Martin-3829",
     images: [],
   },
