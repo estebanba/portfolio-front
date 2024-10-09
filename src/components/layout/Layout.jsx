@@ -7,6 +7,7 @@ import { CONSTANTS } from "../../utils/constants";
 
 export const Layout = () => {
   // const isMobile = useMediaQuery({ maxWidth: CONSTANTS.mobileWidth });
+
   return (
     <section className={stylesLayout.layout}>
       {/* <div className={stylesLayout.header}>
