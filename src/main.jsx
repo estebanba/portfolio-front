@@ -10,6 +10,7 @@ import { Layout } from "./components/layout/Layout";
 import { CanvasSpace } from "./components/three/CanvasSpace";
 import { Experience } from "./components/three/Experience";
 import { HomePage } from "./routes/HomePage";
+import { Grid } from "./components/Grid";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
           { index: true, element: <HomePage /> },
           { path: "/grid", element: <CanvasSpace /> },
           { path: "/iso", element: <Experience /> },
+          { path: "/frame", element: <Grid /> },
         ],
       },
     ],

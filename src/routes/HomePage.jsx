@@ -38,7 +38,7 @@ export const HomePage = () => {
         <div>
           <span style={{ paddingLeft: "8px" }}>Esteban Basili</span>
           <span className="table-subtitle" style={{ display: "inline-flex" }}>
-            Architect and Software Design Engineer.
+            Software Engineer, Data Analyst, Architect
           </span>
           <span className="table-subtitle" style={{ display: "inline-flex" }}>
             Portfolio
